@@ -94,7 +94,7 @@
 -->
 
 <head>
-  <title>Monero offline wallet generator</title>
+  <title>ReCoal Offline wallet Generator</title>
   <meta charset="UTF-8">
     <style type="text/css">
         html {
@@ -3848,7 +3848,7 @@
         nav .nav-wrapper {
             position: relative;
             height: 100%;
-            background: #333;
+            background: #fff;
         }
 
         nav .nav-wrapper i {
@@ -8552,12 +8552,19 @@ var aeonConfig = {
     coinUriPrefix: 'aeon:',
     addressPrefix: 0xB2
 };
-var sumokoinConfig = {
+var recoalConfig = {
     coinUnitPlaces: 9,
-    coinSymbol: 'SUMO',
-    coinName: 'Sumokoin',
+    coinSymbol: 'RECL',
+    coinName: 'Recoal',
     coinUriPrefix: 'sumo:',
-    addressPrefix: 0x2bb39a
+    addressPrefix: 0xd6
+};
+var recoal_testnetConfig = {
+    coinUnitPlaces: 9,
+    coinSymbol: 'TRECL',
+    coinName: 'Recoal',
+    coinUriPrefix: 'sumo:',
+    addressPrefix: 0x4e56
 };
 
 var cnUtilGen = function(initConfig) {
@@ -8982,7 +8989,7 @@ var cnUtilGen = function(initConfig) {
 
     return this;
 };
-var cnUtil = cnUtilGen(sumokoinConfig);
+var cnUtil = cnUtilGen(recoal_testnetConfig);
 /*
  mnemonic.js : Converts between 4-byte aligned strings and a human-readable
  sequence of words. Uses 1626 common words taken from wikipedia article:
@@ -9033,7 +9040,7 @@ function mn_encode(str, wordset_name, coin_name) {
         out.push(out[mn_get_checksum_index(out, wordset.prefix_len)]);
     }
     
-    if(coin_name == "sumokoin"){
+    if(coin_name == "recoal"){
         out.push(wordset.words[mn_get_checksum_index2(out, wordset)]);
     }
     
@@ -10684,18 +10691,67 @@ html { font-family: sans-serif }
 <nav class="grey lighten-3">
     <div class="nav-wrapper">
         <a href="#" class="brand-logo center">
-            <img style="height:60px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAScAAAA8CAMAAAAT4oyfAAAAA3NCSVQICAjb4U/gAAADAFBMVEX////////Efje2fkWpbjJ1TSU8JhAoGgsAAAD////roFbolUDaj0PbjDyaYywBAgkAAAD////RhzvLhT/Efjc8JhAAAAD///+aYyxaOhtGLBQBAgn////0nUXsmkfnlEG2dTSzdDOIVyYkHhgoGgsRDAYKCAb////yn0rwmkTsmkfnlkTXiDjRhzuzdDOwcjOpbjKNWyiIVyZENig5NC9GLBQkHhj////smkf////nlkS2dTSwcjOLWyuNWyh1TSVeSjf////4n0f0nUXsmkfnlkTnlEF/XDh1TSX////olUCpbjKaYyz////6okj8oUXikT7bjDzRhzvLhT/EfjewcjOqcDepbjKhbjv/////okT4okv4n0f0nUXwmkSwfEa1dzqpbjL////0nUXolUCwfEb////6okj0nUXymD3////9/Pv/+/f9+fX89/P89u779O368+z78eb+8eP/79/67+L97Nv469356Nf648325NH748v24Mn83sD03sf/3Lf23ML02Lz417X/1qz91Kv+0qbx07Txz6z/zJn8zZ/yzKb2yp//xo76x5TsyKX9w4r8wobvxZrwwpT7wIX0wYz7v4L2vof6vH37unj2u3/uvY3zu4T3uXrtuof+t2/3tnT3tnntuIP3tXL8s2r3s3DutHr9sWXzsW70sGz/rln8r2HwsG/0rmbyrmrnr3j8qlfzqmLwq2b/qVHmrXPnq27wqWH/pUj9pU3up17qp2Tzpljnp2j/okTwpVnhp2z6okj/oTz+oEH8oUXuolb/njz4n0f7n0Dvn1DnoVvroFbyn0r2nUH/nDj0nUXioF3snk/pnlPwmkTnm07smkfam1znlkTolUDilknallPnlEHokz7okTnkkkDikT7njTPaj0PbjDzgjDflii3gizXkiS7hiC7khijXiDjghCfjgyTahS/ggiThgSDXgy7cgSTffx7ffRnefRzXfiTRfyzYfB/eeRTbehjSeiLddg/XdxjSeB7TdRbbcAXbbwPabADLbxN0Vh8RAAABAHRSTlMAEREREREREREiIiIiIiIiIjMzMzMzM0REREREVVVVVVVVVVVVVVVmZmZmZmZmZmZmZmZmZmZmd3eIiIiIiIiIiJmZmZmZmZmZqqqqqru7u7u7u7u7u7u7u8zMzMzMzMzMzN3d3d3u7u7u////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////cd8Q/wAAAAlwSFlzAAAK6wAACusBgosNWgAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDIvMjMvMTdmSK4lAAALQElEQVR4nO2ae1gU1xXAd/vM9JG66WOTdtN3uk0f2kfazfa9faWTdtM2faRr27TdJKuZ5SGgAgYUVPCBBLCui2YVRSAoRAEjoi66yDaQaIKBCIqCBJWAri4aiWhQM7O7M/fce2eWddP0j35zPr6P77tz955zf3PuueeeOxqNKqqooooqqqiiiiqqqKLKf1fef/vnpk6bOu3zH38HxtbqDCazif8zMFq8XR8RrFkjNTNkPx09OKOP8lCjZfS8bqNBj2tWUESOiLdrNLd+/f6HH/cfPHjQ//ijv//+Hbco2qIjGkjTGFqB1sg6OEnsrAn9Ric1m7G52cVma7jBgH5vouZqlZ45iFkJqqWhOLvFSKLSSoaxoFUHzMXm97FfzPR7G9avWLRgUaF7c6P/wIPfJEhZSFPMCnZbKMUmZKkoNtHgODjZybmiMUhOjBlMOPxjM94DKQKcGGCwAXR+78+f8zcUZiYkpc+bn5WRmpi2uMp34I93xMgJJ05x0qK3DcVh0sbJiTMSnFgFTlqKUljxZJy0ABPUddvf/Q15CclL6g/3B8bGgsN96zKc2VW+7h9Cl4rCCX/BBCetTRYTLzZtnJxsOCYGQgCcdEqarYycIokTtBgy/cp+vyspeeXhwcGhoZGRwOj4xPVrPbnOZd4Df54SEydsaZOc5L1JEIsmTk7YWgAKcU56OWcKi10no0iaBLDYAtTcu79lMbewtbe7u/dYf//g0EggODp+/Xp7SkaD958IVDROGHack1HRWI6Jm5MVdmUgD8QpCiYIiuYEsMP3/+n93mznqhfa2jq6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">
+			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="468px" height="62px" viewBox="0 0 468 68" enable-background="new 0 0 468 68" xml:space="preserve">  <image id="image0" width="468" height="68" x="0" y="0"
+    xlink:href="data:image/png;base64,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
+MDCqLULdAAAAAElFTkSuQmCC" />
+</svg>
+
+            <!--<img style="height:64px;" src="recoal.png">-->
         </a>
 
     </div>
 </nav>
 
 <div class="row">&nbsp;</div>
-<div class="row center-align">
+<!--<div class="row center-align">
     <div class="col s12">
-        <h4 style="color: #555;">Offline wallet generator</h4>
+        <h4 style="color: #555;">ReCoal Offline wallet generator</h4>
     </div>
-</div>
+</div>-->
 
 
     <div class="row">
@@ -10703,16 +10759,17 @@ html { font-family: sans-serif }
             <p>
                 This page generates a new
                 <select onchange="js:setCoin(this.selectedIndex);" class="waves-effect waves-light btn" style="max-width: 20%">
-                  <option>Sumokoin</option>
-                  <option>Monero</option>
-                  <option>Aeon</option>
+                  <option>ReCoal Testnet</option>
+				  <option>ReCoal Mainnet</option>
+				  <!--<option>Monero</option>
+                  <option>Aeon</option>-->
                 </select>
                 wallet. It is self contained and
                 does all the necessary calculations locally, so is suitable for generating a new wallet on a machine
                 that is not connected to the network, and may even never be. This way, you can create
-                a Sumokoin, Monero or Aeon wallet without risking the keys. This file is GPG signed, see <a href="#gpg-instructions">GPG instructions</a>.
+                a ReCoal, Recoal Testnet without risking the keys. This file is GPG signed, see <a href="#gpg-instructions">GPG instructions</a>.
                 You can check for up to date versions of this page
-                <a href="https://github.com/sumoprojects/sumokoin-wallet-generator/blob/master/sumokoin-wallet-generator.html">here</a>.
+                <a href="https://github.com/ReCoal/recoal-wallet-generator/recoal-wallet-generator.html">here</a>.
             </p>
         </div>
     </div>
@@ -10728,7 +10785,7 @@ html { font-family: sans-serif }
             <form>
                 <input class="btn deep-orange" type="button" onclick="js:genwallet_prefix();" value="Generate wallet with prefix" action="" id="gen_prefix_widget"/>
                 <p>(very slow for more than a few characters)</p>
-                <input type="text" value="Sumo" id="prefix_widget" oninput="js:check_prefix_validity()"; />
+                <input type="text" value="ct" id="prefix_widget" oninput="js:check_prefix_validity()"; />
             </form>
         </div>
     </div>
@@ -10754,7 +10811,7 @@ html { font-family: sans-serif }
                          style="line-height: 25px; height: 25px; font-size: 60%; padding: 0px 1.5rem;"/ id="show_qr_code">
                     </span>
 
-                    <p>This is the address you give to third parties to send SUMO/XMR/AEON to you.
+                    <p>This is the address you give to third parties to send RECL/XMR/AEON to you.
                         <br><b>It is the only information here that's meant to be public.</b>
                     </p>
                 </div>
@@ -10771,7 +10828,7 @@ html { font-family: sans-serif }
                 <div class="card-content pink-text text-darken-5">
                     <span class="card-title pink-text text-darken-5">Mnemonic seed</span>
                     <p>
-                        The mnemonic seed is a string that comprises 26 (Sumokoin), 25 (Monero) or 24 (AEON) words and allows you to recreate your
+                        The mnemonic seed is a string that comprises 26 (ReCoal Mainnet) or 26 (ReCoal Testnet) words and allows you to recreate your
                         private keys. <b>Keep it secure!</b>
                     </p>
                 </div>
@@ -10828,7 +10885,7 @@ being passed around. It is in your interest to check the signature.
 </p>
 <p>
 This page is maintained as a
-<a href="https://github.com/sumoprojects/sumokoin-wallet-generator/">git repository</a>.
+<a href="https://github.com/ReCoal/recoal-wallet-generator">git repository</a>.
 All commits are signed. In addition, released versions of the page are signed separately.
 In order to check either, you first need to import
 <a href="https://raw.githubusercontent.com/sumoprojects/sumokoin/master/utils/gpg_keys/sumoshi.asc">sumoshi's GPG key</a>
@@ -10844,12 +10901,12 @@ gpg --import sumoshi.asc
 <p>
 You need to get the signature file corresponding to the version of the page you're using.
 Original signature files are
-<a href="https://raw.githubusercontent.com/sumoprojects/sumokoin-wallet-generator/master/sumokoin-wallet-generator.html.asc">in the git repository</a>
+<a href="https://raw.githubusercontent.com/ReCoal/recoal-wallet-generator/master/recoal-wallet-generator.html.asc">in the git repository</a>
 as well. Save it as sumokoin-wallet-generator.html.asc, then:
 </p>
 
 <code>
-gpg --verify sumokoin-wallet-generator.html.asc
+gpg --verify recoal-wallet-generator.html.asc
 </code>
 
 <p>
@@ -10903,9 +10960,8 @@ place any email address in a new GPG key, so the right email being shown is no g
     <br>
     If you found this useful, a donation would be appreciated:
     <br>
-<pre>Monero: 4AfUP827TeRZ1cck3tZThgZbRCEwBrpcJTkA1LCiyFVuMH4b5y59bKMZHGb9y58K3gSjWDCBsB4RkGsGDhsmMG5R2qmbLeW</pre>
+<pre>Monero: 46Bf5YxKG2sa7Q7y7wjbAmjMYki1fkM1oZupmRk5ZCSXYMPwjL3F7LNfUhMsSCgLirCp5XUbyQFcx3uk5ULxb9f525w4zMT</pre>
     <br>
-<pre>Aeon: WmtXcFZj5iGY21JxAtFsJVQmQQyo7jgoJP8V4zLWVzDeeTfvbP8Mzb5gbNpQEc6BkeUYUqjGntHDSDyA6LKjdGBQ1w9iEpfVw</pre>
 
 <br>
 </p>
@@ -10953,10 +11009,17 @@ function genwallet(lang)
   
   // only monero and sumokoin has the URI scheme
   wallet_prefix = String(prefix_widget.value);
-  if(wallet_prefix.startsWith("Sumo")){
-    mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "sumokoin");
+  if(wallet_prefix.startsWith("co")){
+    mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "recoal");
 	qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
-    qr.makeCode("sumo:"+keys.public_addr);
+    qr.makeCode(keys.public_addr);
+	//qr.makeCode("sumo:"+keys.public_addr);
+  }
+   else if(wallet_prefix.startsWith("ct")){
+    mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "recoal_testnet");
+	qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
+    qr.makeCode(keys.public_addr);
+	//qr.makeCode("sumo:"+keys.public_addr);
   }
   else if (wallet_prefix.startsWith("4")) {
     mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "monero");
@@ -11013,10 +11076,17 @@ function genwallet_prefix_worker()
     qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
     qr.makeCode("monero:"+keys.public_addr);
   }
-  else if(wallet_prefix.startsWith("Sumo")){
-    mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "sumokoin");
+  else if(wallet_prefix.startsWith("co")){
+    mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "recoal");
 	qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
-    qr.makeCode("sumo:"+keys.public_addr);
+    qr.makeCode(keys.public_addr);
+	//qr.makeCode("sumo:"+keys.public_addr);
+  }
+    else if(wallet_prefix.startsWith("ct")){
+    mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "recoal_testnet");
+	qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
+    qr.makeCode(keys.public_addr);
+	//qr.makeCode("sumo:"+keys.public_addr);
   }
   else if(wallet_prefix.startsWith("W")) {
     mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "aeon");
@@ -11135,18 +11205,24 @@ function setCoin(index)
   var language
   prefix_widget = document.getElementById("prefix_widget");
   if (index == 0) {
-    cnUtil = cnUtilGen(sumokoinConfig);
-    prefix_widget.value = "Sumo";
+    cnUtil = cnUtilGen(recoal_testnetConfig);
+    prefix_widget.value = "ct";
     enable = true
     language = "english"
   }
   else if (index == 1) {
-    cnUtil = cnUtilGen(moneroConfig);
-    prefix_widget.value = "4";
-    enable = true
+    cnUtil = cnUtilGen(recoalConfig);
+    prefix_widget.value = "co";
+    enable = enabled
     language = "english"
   }
   else if (index == 2) {
+    cnUtil = cnUtilGen(moneroConfig);
+    prefix_widget.value = "4";
+    enable = false
+    language = "english"
+  }
+  else if (index == 3) {
     cnUtil = cnUtilGen(aeonConfig);
     prefix_widget.value = "W";
     enable = false
