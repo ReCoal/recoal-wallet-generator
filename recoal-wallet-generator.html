@@ -14,6 +14,7 @@
  Vitaly Magerya.
  */
 
+// Copyright (c) 2018, Recoal Project 
 // Copyright (c) 2014-2015, MyMonero.com
 // 
 // All rights reserved.
@@ -94,6 +95,7 @@
 -->
 
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>ReCoal Offline wallet Generator</title>
   <meta charset="UTF-8">
     <style type="text/css">
@@ -6662,9 +6664,9 @@
 
     </style>
 </head>
-<body>
-<script>
+<body oncontextmenu="return false">
 
+<script>
 var JSBigInt = (function () {
     "use strict";
     /*
@@ -10185,7 +10187,6 @@ var mn_words = {
         ]
     }
 };
-
 (function() {
     'use strict';
     for (var i in mn_words) {
@@ -10686,60 +10687,105 @@ html { font-family: sans-serif }
   z-index: 1007;
   display: none;
 }
+#bx {
+	top: 0%;
+	left: 0%;
+	bottom: 0%;
+  background-color: #ffafaf;
+  color: #ffffff
+}
+#bx2 {
+	top: 50%;
+	height: 50px;
+	background-color: #bdffbc;
+}
 </style>
 
 <nav class="grey lighten-3">
     <div class="nav-wrapper">
         <a href="#" class="brand-logo center">
-			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="468px" height="62px" viewBox="0 0 468 68" enable-background="new 0 0 468 68" xml:space="preserve">  <image id="image0" width="468" height="68" x="0" y="0"
-    xlink:href="data:image/png;base64,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
-MDCqLULdAAAAAElFTkSuQmCC" />
-</svg>
-
+			<img src = "data:image/png;base64,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" style="height:64px">
             <!--<img style="height:64px;" src="recoal.png">-->
         </a>
 
@@ -10760,7 +10806,7 @@ MDCqLULdAAAAAElFTkSuQmCC" />
                 This page generates a new
                 <select onchange="js:setCoin(this.selectedIndex);" class="waves-effect waves-light btn" style="max-width: 20%">
                   <option>ReCoal Testnet</option>
-				  <option>ReCoal Mainnet</option>
+				  <!--<option>ReCoal Mainnet</option>-->
 				  <!--<option>Monero</option>
                   <option>Aeon</option>-->
                 </select>
@@ -10811,13 +10857,13 @@ MDCqLULdAAAAAElFTkSuQmCC" />
                          style="line-height: 25px; height: 25px; font-size: 60%; padding: 0px 1.5rem;"/ id="show_qr_code">
                     </span>
 
-                    <p>This is the address you give to third parties to send RECL/XMR/AEON to you.
+                    <p>This is the address you give to third parties to send RECL to you.
                         <br><b>It is the only information here that's meant to be public.</b>
                     </p>
                 </div>
                 <div class="card-action center-align">
-                    <pre class="center-align" id="address_widget">generating...</pre>
-                    <span class="qrcode" id="address_qr_widget" onclick="js:toggle_qr();"></span>
+					<pre class="center-align" id="address_widget">generating...</pre>
+                    <span class="qrcode" id="address_qr_widget" onclick="js:toggle_qr();"></span></div>
                 </div>
             </div>
         </div>
@@ -10833,8 +10879,8 @@ MDCqLULdAAAAAElFTkSuQmCC" />
                     </p>
                 </div>
                 <div class="card-action center-align">
-                    <h5 class="grey-text text-darken-4" id="mnemonic_widget">Generating... </h5>
-                </div>
+						<h5 class="grey-text text-darken-4" id="mnemonic_widget">Generating... </h5>
+				</div>
             </div>
         </div>
     </div>
@@ -11240,6 +11286,19 @@ function setCoin(index)
 
 genwallet();
 </script>
-
+<style>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #4cb293;
+    color: black;
+    text-align: center;
+}
+</style>
+<div class="footer" link="white">
+  <p style="font-family:verdana;color:white">ReCoal &copy; 2018 Paper Wallet/Offline wallet Generator. Find us on <a href="https://github.com/ReCoal" style="color:white;"><i class="fa fa-github" style="font-size:24px"></i></a>  Support :<u><a style="color:white;" href="mailto:walletdev@recoal.gq">walletdev@recoal.gq</a></u></p>
+</div>
 </body>
 </html>
