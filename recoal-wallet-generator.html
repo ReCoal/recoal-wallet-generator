@@ -8555,17 +8555,17 @@ var aeonConfig = {
     addressPrefix: 0xB2
 };
 var recoalConfig = {
-    coinUnitPlaces: 9,
+    coinUnitPlaces: 12,
     coinSymbol: 'RECL',
-    coinName: 'Recoal',
-    coinUriPrefix: 'sumo:',
+    coinName: 'ReCoal',
+    coinUriPrefix: 'recoal:',
     addressPrefix: 0xd6
 };
 var recoal_testnetConfig = {
-    coinUnitPlaces: 9,
+    coinUnitPlaces: 12,
     coinSymbol: 'TRECL',
-    coinName: 'Recoal',
-    coinUriPrefix: 'sumo:',
+    coinName: 'ReCoal',
+    coinUriPrefix: 'recoal:',
     addressPrefix: 0x4e56
 };
 
@@ -8991,7 +8991,7 @@ var cnUtilGen = function(initConfig) {
 
     return this;
 };
-var cnUtil = cnUtilGen(recoal_testnetConfig);
+var cnUtil = cnUtilGen(recoalConfig);
 /*
  mnemonic.js : Converts between 4-byte aligned strings and a human-readable
  sequence of words. Uses 1626 common words taken from wikipedia article:
@@ -10805,16 +10805,15 @@ QEElhBBCAkBBJYQQQnIj8m8Nkcfh4eoeLgAAAABJRU5ErkJggg==" style="height:64px">
             <p>
                 This page generates a new
                 <select onchange="js:setCoin(this.selectedIndex);" class="waves-effect waves-light btn" style="max-width: 20%">
-                  <option>ReCoal Testnet</option>
-				  <!--<option>ReCoal Mainnet</option>-->
-				  <!--<option>Monero</option>
-                  <option>Aeon</option>-->
+					<option>ReCoal Mainnet</option>
+					<option>ReCoal Testnet</option>
+					<!--<option>Monero</option>
+					<option>Aeon</option>-->
                 </select>
                 wallet. It is self contained and
                 does all the necessary calculations locally, so is suitable for generating a new wallet on a machine
                 that is not connected to the network, and may even never be. This way, you can create
-                a ReCoal, Recoal Testnet without risking the keys. This file is GPG signed, see <a href="#gpg-instructions">GPG instructions</a>.
-                You can check for up to date versions of this page
+                a ReCoal wallet without risking the keys.You can check for up to date versions of this page
                 <a href="https://github.com/ReCoal/recoal-wallet-generator/recoal-wallet-generator.html">here</a>.
             </p>
         </div>
@@ -10874,7 +10873,7 @@ QEElhBBCAkBBJYQQQnIj8m8Nkcfh4eoeLgAAAABJRU5ErkJggg==" style="height:64px">
                 <div class="card-content pink-text text-darken-5">
                     <span class="card-title pink-text text-darken-5">Mnemonic seed</span>
                     <p>
-                        The mnemonic seed is a string that comprises 25 (ReCoal Mainnet) or 25 (ReCoal Testnet) words and allows you to recreate your
+                        The mnemonic seed is a string that comprises 25 (ReCoal Mainnet) words and allows you to recreate your
                         private keys. <b>Keep it secure!</b>
                     </p>
                 </div>
@@ -10923,84 +10922,9 @@ QEElhBBCAkBBJYQQQnIj8m8Nkcfh4eoeLgAAAABJRU5ErkJggg==" style="height:64px">
         <div class="row">
             <div class="col l12">
                 
-<h5 id="gpg-instructions">How to verify GPG signatures</h5>
-
-<p>
-All released versions of this page will be GPG signed by moneromooo, to avoid trojaned versions
-being passed around. It is in your interest to check the signature.
-</p>
-<p>
-This page is maintained as a
-<a href="https://github.com/ReCoal/recoal-wallet-generator">git repository</a>.
-All commits are signed. In addition, released versions of the page are signed separately.
-In order to check either, you first need to import
-<a href="https://raw.githubusercontent.com/sumoprojects/sumokoin/master/utils/gpg_keys/sumoshi.asc">sumoshi's GPG key</a>
-from the Sumokoin source tree:
-</p>
-
-<code>
-gpg --import sumoshi.asc
-</code>
-
-<h5>Checking a standalone signature</h5>
-
-<p>
-You need to get the signature file corresponding to the version of the page you're using.
-Original signature files are
-<a href="https://raw.githubusercontent.com/ReCoal/recoal-wallet-generator/master/recoal-wallet-generator.html.asc">in the git repository</a>
-as well. Save it as sumokoin-wallet-generator.html.asc, then:
-</p>
-
-<code>
-gpg --verify recoal-wallet-generator.html.asc
-</code>
-
-<p>
-You should see a message similar to:
-</p>
-
-<code>
-gpg: Good signature from "Sumoshi Tanaka &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="146761797b677c7d3a60757a757f75547379757d783a777b79">[email&#160;protected]</a>&gt;"
-</code>
-
-<p>
-Check the signature is from the key you imported previously! If not, you may be checking
-that file was properly signed by an attacker instead of sumoshi. Beware that anyone can
-place any email address in a new GPG key, so the right email being shown is no guarantee.
-</p>
-
-<p>
-If you want to verify an old version of the file, you will have to retrieve the matching
-signature file from git.
-</p>
-
-<h5>Checking a git commit's signature</h5>
-
-<p>
-If you're using git to get the latest and greatest, it's even simpler:
-</p>
-
-<code>
-git show --show-signature
-</code>
-
-<p>
-You should see a message similar to:
-</p>
-
-<code>
-gpg: Good signature from "Sumoshi Tanaka &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b080e1614081312550f1a151a101a3b1c161a121755181416">[email&#160;protected]</a>&gt;"
-</code>
-
-<p>
-Check the signature is from the key you imported previously! If not, you may be checking
-that file was properly signed by an attacker instead of moneromooo. Beware that anyone can
-place any email address in a new GPG key, so the right email being shown is no guarantee.
-</p>
-
 <h5>Credits</h5>
 <p>
-    Made by moneromooo, based on code from <a href="https://mymonero.com/">MyMonero</a>. Copyright notices in the source.
+    Made by moneromooo,edited for ReCoal by <a href="https://t.me/recoal/">ReCoal Dev Team</a>. Copyright notices in the source.
     <br>
     Thanks to antanst for the CSS, and to luigi1111 for crypto fixes and improvements.
     <br>
@@ -11016,7 +10940,7 @@ place any email address in a new GPG key, so the right email being shown is no g
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/f2bf09f8/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 function poor_mans_kdf(str)
 {
   var hex = cnBase58.bintohex(cnBase58.strtobin(str));
@@ -11058,14 +10982,14 @@ function genwallet(lang)
   if(wallet_prefix.startsWith("co")){
     mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "recoal");
 	qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
-    qr.makeCode(keys.public_addr);
-	//qr.makeCode("sumo:"+keys.public_addr);
+    //qr.makeCode(keys.public_addr);
+	qr.makeCode("recoal:"+keys.public_addr);
   }
    else if(wallet_prefix.startsWith("ct")){
     mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "recoal_testnet");
 	qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
-    qr.makeCode(keys.public_addr);
-	//qr.makeCode("sumo:"+keys.public_addr);
+    //qr.makeCode(keys.public_addr);
+	qr.makeCode("recoal:"+keys.public_addr);
   }
   else if (wallet_prefix.startsWith("4")) {
     mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "monero");
@@ -11125,14 +11049,14 @@ function genwallet_prefix_worker()
   else if(wallet_prefix.startsWith("co")){
     mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "recoal");
 	qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
-    qr.makeCode(keys.public_addr);
-	//qr.makeCode("sumo:"+keys.public_addr);
+    //qr.makeCode(keys.public_addr);
+	qr.makeCode("recoal:"+keys.public_addr);
   }
     else if(wallet_prefix.startsWith("ct")){
     mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "recoal_testnet");
 	qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
-    qr.makeCode(keys.public_addr);
-	//qr.makeCode("sumo:"+keys.public_addr);
+    //qr.makeCode(keys.public_addr);
+	qr.makeCode("recoal:"+keys.public_addr);
   }
   else if(wallet_prefix.startsWith("W")) {
     mnemonic_widget.innerHTML = mn_encode(seed,current_lang, "aeon");
@@ -11251,15 +11175,15 @@ function setCoin(index)
   var language
   prefix_widget = document.getElementById("prefix_widget");
   if (index == 0) {
-    cnUtil = cnUtilGen(recoal_testnetConfig);
-    prefix_widget.value = "ct";
-    enable = true
-    language = "english"
-  }
-  else if (index == 1) {
     cnUtil = cnUtilGen(recoalConfig);
     prefix_widget.value = "co";
     enable = enabled
+    language = "english"
+  }
+  else if (index == 1) {
+    cnUtil = cnUtilGen(recoal_testnetConfig);
+    prefix_widget.value = "ct";
+    enable = true
     language = "english"
   }
   else if (index == 2) {
@@ -11298,7 +11222,7 @@ genwallet();
 }
 </style>
 <div class="footer" link="white">
-  <p style="font-family:verdana;color:white">ReCoal &copy; 2018 Paper Wallet/Offline wallet Generator. Find us on <a href="https://github.com/ReCoal" style="color:white;"><i class="fa fa-github" style="font-size:24px"></i></a>  Support :<u><a style="color:white;" href="/cdn-cgi/l/email-protection#acdbcdc0c0c9d8c8c9daecdec9cfc3cdc082cbdd"><span class="__cf_email__" data-cfemail="1a6d7b76767f6e7e7f6c5a687f79757b76347d6b">[email&#160;protected]</span></a></u></p>
+  <p style="font-family:verdana;color:white">ReCoal &copy; 2018 Paper Wallet/Offline wallet Generator. Find us on <a href="https://github.com/ReCoal" style="color:white;"><i class="fa fa-github" style="font-size:24px"></i></a>  Support :<u><a style="color:white;" href="mailto:walletdev@recoal.org">walletdev@recoal.org</a></u></p>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/f2bf09f8/cloudflare-static/email-decode.min.js"></script></body>
+</body>
 </html>
